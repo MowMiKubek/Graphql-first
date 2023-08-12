@@ -36,5 +36,5 @@ type Query {
 
 type Mutation {
   # createDirector(input: DirectorInput!): Director
-  createFilm(input: FilmInput!): Film
+  createFilm(createFilmInput: FilmInput!): Film
 }

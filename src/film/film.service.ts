@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
+import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaService } from 'prisma/prisma.service';
 import { FilmInput } from 'src/graphql';
 
 @Injectable()
 export class FilmService {
-  create(createFilmInput: FilmInput) {
-    return { ...createFilmInput, id: 1};
+  constructor(private prismaService: PrismaService) {}
+
+  create(createFilmInput: Prisma.FilmCreateInput) {
+    return this.prismaService.film.create({
+      data: createFilmInput
+    });
   }
 
   findAll() {
-    return [{
-      id: 1,
-      title: "Oppenheimer",
-      releaseDate: "wczoraj"
-    }]
+    return this.prismaService.film.findMany();
   }
 
   findOne(id: number) {
-    return {
-      id: 1,
-      title: "Oppenheimer",
-      releaseDate: "wczoraj"
-    }
+    return this.prismaService.film.findUnique({
+      where: { id },
+    })
   }
 
   // update(id: number, updateFilmInput: UpdateFilmInput) {

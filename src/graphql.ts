@@ -28,7 +28,7 @@ export abstract class IQuery {
 }
 
 export abstract class IMutation {
-    abstract createFilm(input: FilmInput): Nullable<Film> | Promise<Nullable<Film>>;
+    abstract createFilm(createFilmInput: FilmInput): Nullable<Film> | Promise<Nullable<Film>>;
 }
 
 export type DateTime = any;
