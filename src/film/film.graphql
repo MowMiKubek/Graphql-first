@@ -1,0 +1,40 @@
+scalar DateTime
+
+# type Director {
+#   id: Int!
+#   firstname: String!
+#   lastname: String!
+#   films: [Film!]!
+# }
+
+type Film {
+  id: Int!
+  title: String!
+  description: String
+  releaseDate: DateTime!
+  # director: Director!
+}
+
+# input DirectorInput {
+#   firstname: String!
+#   lastname: String!
+# }
+
+input FilmInput {
+  title: String!
+  description: String
+  releaseDate: DateTime!
+  # directorId: Int!
+}
+
+type Query {
+  # getDirector(id: Int!): Director
+  Film(id: Int!): Film
+  # getAllDirectors: [Director!]!
+  Films: [Film!]!
+}
+
+type Mutation {
+  # createDirector(input: DirectorInput!): Director
+  createFilm(input: FilmInput!): Film
+}
