@@ -15,4 +15,13 @@ model Film {
   title       String
   description String?
   releaseDate DateTime  @default(now())
+  directorId  Int       @default(1)
+  director    Director  @relation(fields: [directorId], references: [id])
+}
+
+model Director {
+  id        Int     @id @default(autoincrement())
+  firstname String
+  lastname  String
+  films     Film[]
 }

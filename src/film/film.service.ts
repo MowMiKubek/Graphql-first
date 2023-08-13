@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, PrismaClient } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
-import { FilmInput } from 'src/graphql';
 
 @Injectable()
 export class FilmService {
@@ -23,11 +22,9 @@ export class FilmService {
     })
   }
 
-  // update(id: number, updateFilmInput: UpdateFilmInput) {
-  //   return `This action updates a #${id} film`;
-  // }
-
-  // remove(id: number) {
-  //   return `This action removes a #${id} film`;
-  // }
+  find(query: any) {
+    return this.prismaService.film.findMany({
+      where: query
+    })
+  }
 }

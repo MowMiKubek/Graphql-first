@@ -5,7 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { FilmModule } from './film/film.module';
-// import { GraphQlDateTime } from 'graphql-iso-date';
+import { DirectorModule } from './director/director.module';
 
 const GraphQlDateTime = require('graphql-iso-date');
 
@@ -16,7 +16,7 @@ const GraphQlDateTime = require('graphql-iso-date');
     plugins: [ApolloServerPluginLandingPageLocalDefault()],
     typePaths: ['./**/*.graphql'],
     resolvers: { DateTime: GraphQlDateTime },
-  }), FilmModule],
+  }), FilmModule, DirectorModule],
   controllers: [AppController],
   providers: [AppService],
 })

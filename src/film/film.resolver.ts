@@ -1,10 +1,14 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, ResolveField, Parent } from '@nestjs/graphql';
 import { FilmService } from './film.service';
-import { Prisma } from '@prisma/client';
+import { Film, Prisma } from '@prisma/client';
+import { DirectorService } from 'src/director/director.service';
 
 @Resolver('Film')
 export class FilmResolver {
-  constructor(private readonly filmService: FilmService) {}
+  constructor(
+    private readonly filmService: FilmService,
+    private readonly directorService: DirectorService,
+    ) {}
 
   @Mutation('createFilm')
   create(@Args('createFilmInput') createFilmInput: Prisma.FilmCreateInput) {
@@ -21,4 +25,8 @@ export class FilmResolver {
     return this.filmService.findOne(id);
   }
 
+  @ResolveField('director')
+  director(@Parent() film: Film) {
+    return this.directorService.findOne(film.directorId);
+  }
 }
