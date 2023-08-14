@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+My first try to implement [Graphql](https://graphql.org/) API using [Nest](https://github.com/nestjs/nest) and [Prisma](https://www.prisma.io/). It provides api for films and directors.
 
 ## Installation
 
@@ -45,29 +45,15 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Custom scripts
 
 ```bash
-# unit tests
-$ npm run test
+# generate types from graphql schema
+$ npm run gen-typings
 
-# e2e tests
-$ npm run test:e2e
+# generate types from prisma schema 
+$ npm run prisma:generate
 
-# test coverage
-$ npm run test:cov
+# run 2 above scripts (+ npm run start:dev)
+$ npm run dev
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
